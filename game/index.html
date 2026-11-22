@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ember Duel — a turn-based card duel</title>
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<div id="stage">
+  <div id="table">
+    <div id="enemy-zone">
+      <div id="enemy-info">
+        <div class="portrait" id="enemy-portrait"></div>
+        <div>
+          <div class="fighter-name">Cinder</div>
+          <div class="fighter-sub">Warden of the Last Flame</div>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
+            <div class="lifebar" id="enemy-life"><div class="fill"></div><div class="num"></div></div>
+            <span class="block-badge" id="enemy-block"></span>
+          </div>
+        </div>
+      </div>
+      <div id="enemy-hand" aria-label="Cinder's hand, face down"></div>
+      <div id="enemy-intent">
+        <div class="intent-label">CINDER PLANS NEXT</div>
+        <div class="intent-pill" id="intent-pill"></div>
+      </div>
+    </div>
+
+    <div id="center-field">
+      <div id="played-row">
+        <div class="played-slot" id="slot-enemy"><div class="slot-label">CINDER PLAYED</div><div class="slot-body"></div></div>
+        <div class="played-slot" id="slot-player"><div class="slot-label">YOU PLAYED</div><div class="slot-body"></div></div>
+      </div>
+      <div id="mid-column">
+        <div id="turn-banner"></div>
+        <div id="turn-sub"></div>
+        <div id="chain-badge"></div>
+      </div>
+      <div id="battle-log"><div class="log-title">BATTLE LOG</div><div id="log-lines"></div></div>
+    </div>
+
+    <div id="player-zone">
+      <div id="player-bar">
+        <div class="portrait you" id="player-portrait"></div>
+        <div>
+          <div class="fighter-name">You</div>
+          <div style="display:flex;gap:8px;align-items:center;margin-top:6px">
+            <div class="lifebar" id="player-life"><div class="fill"></div><div class="num"></div></div>
+            <span class="block-badge" id="player-block"></span>
+          </div>
+        </div>
+        <div class="mana" id="player-mana" style="margin-left:14px"></div>
+        <div class="spacer"></div>
+        <div class="pile">DECK<br><b id="deck-count">0</b></div>
+        <div class="pile">DISCARD<br><b id="discard-count">0</b></div>
+        <button id="end-turn" type="button">End Turn ⏎</button>
+      </div>
+      <div id="player-hand" aria-label="Your hand"></div>
+    </div>
+  </div>
+
+  <div id="title-screen" class="overlay">
+    <div class="panel">
+      <div id="title-sigil"></div>
+      <h1 class="game-title">EMBER DUEL</h1>
+      <p class="game-tag">A turn-based duel of elemental cards. Outplay Cinder, Warden of the Last Flame.</p>
+      <div class="legend" id="legend"></div>
+      <div class="howto">
+        <div><b>Play cards</b> with mana.<br>Each turn you gain +1 mana.</div>
+        <div><b>Chain elements:</b> two cards of one<br>element in a turn earn +2 power.</div>
+        <div><b>Read Cinder's intent</b> — her next<br>move is shown, so guard or strike first.</div>
+      </div>
+      <button class="big-btn" id="play-btn" type="button">Play</button>
+      <p class="keys-hint">Mouse: click a card, then click again or press Enter to play it &nbsp;·&nbsp; Keys: 1–5 select · Enter/Space play · E end turn · Esc back</p>
+    </div>
+  </div>
+
+  <div id="end-screen" class="overlay hidden">
+    <div class="panel">
+      <div class="end-title" id="end-title"></div>
+      <p class="end-sub" id="end-sub"></p>
+      <div class="stats-row" id="end-stats"></div>
+      <button class="big-btn" id="again-btn" type="button">Play Again</button>
+    </div>
+  </div>
+
+  <div id="fx"></div>
+  <p id="status" role="status" aria-live="polite"></p>
+</div>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
